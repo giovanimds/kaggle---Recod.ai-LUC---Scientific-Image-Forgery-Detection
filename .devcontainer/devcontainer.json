@@ -1,0 +1,56 @@
+{
+  "name": "Scientific Image Forgery Detection",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "hostRequirements": {
+    "cpus": 32,
+    "memory": "64gb",
+    "storage": "32gb"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.linting.flake8Enabled": true,
+        "python.formatting.provider": "black",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": "explicit"
+        },
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter"
+        }
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.black-formatter",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "charliermarsh.ruff"
+      ]
+    }
+  },
+  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && . $HOME/.cargo/env && uv pip install -e .",
+  "forwardPorts": [8888, 6006],
+  "portsAttributes": {
+    "8888": {
+      "label": "Jupyter",
+      "onAutoForward": "notify"
+    },
+    "6006": {
+      "label": "TensorBoard",
+      "onAutoForward": "notify"
+    }
+  },
+  "remoteEnv": {
+    "PYTHONUNBUFFERED": "1"
+  },
+  "postStartCommand": ". $HOME/.cargo/env"
+}
