@@ -1,11 +1,6 @@
 {
   "name": "Scientific Image Forgery Detection",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
-  "hostRequirements": {
-    "cpus": 32,
-    "memory": "64gb",
-    "storage": "32gb"
-  },
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
